@@ -125,7 +125,7 @@ The Request body for
                 "audioFileMetadata":{
                     "id": "<any integer greater 0>",
                     "name":"<name of song, max length = 100>",
-                    "duration":<time duration in seconds , greater than 0>,
+                    "duration":<time duration in seconds , greater than 0>
                     }
                 }
         - podcast
@@ -137,7 +137,7 @@ The Request body for
                     "name":"<name of podcast, max length = 100>",
                     "duration":<time duration in seconds , greater than 0>,
                     "host":"<hostname , max length = 100>",
-                    "participents":"<name of participants , max length = 1000>",
+                    "participants":"<name of participants , max length = 1000>"
                         }
               }      
         - audiobook
@@ -149,7 +149,7 @@ The Request body for
                     "title":"<title of the book, max length = 100>",
                     "aurthor":"<name of aurthor , max length = 100>",
                     "narrator":"<name of narrator, max length = 100>",
-                    "duration":<time duration in seconds , greater than 0>,
+                    "duration":<time duration in seconds , greater than 0>
                         }
               }                      
 
