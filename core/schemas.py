@@ -99,9 +99,6 @@ AudioCreateTypeSchemas = Union[
     SongCreateSchema, PodcastCreateSchema, AudiobookCreateSchema,
 ]
 
-AudioCreateTypeSchemas = Union[
-    PodcastCreateSchema, SongCreateSchema, PodcastCreateSchema, AudiobookCreateSchema,
-]
 
 
 type_to_create_schema_map = {
