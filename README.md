@@ -66,7 +66,7 @@ Create a databases for AudioServer and have the DataBase URL ready
 5. uvicorn
 6. python-decouple
 
-Note : These can be installed through requirements.txt provided
+Note : These can be installed through [requirements.txt](https://raw.githubusercontent.com/mohankumarpaluru/AudioServer/main/requirements.txt) provided
 
 ### Setup 
 
@@ -79,7 +79,7 @@ Clone this Repo and  open the repo root directory
 	(AudioVenv)$ pip install --upgrade pip
 	(AudioVenv)$ pip install wheel
      ```
-2. Install the service Requirements 
+2. Install the service [Requirements](https://raw.githubusercontent.com/mohankumarpaluru/AudioServer/main/requirements.txt)
 	```
 	(AudioVenv)$ pip install -r requirements.txt 
 	```
@@ -98,7 +98,7 @@ After starting the service the API documentation can be found in the address bel
 ```
 127.0.0.1:<AUDIO_SERVER_PORT>\docs
 ```
-![Swagger UI](myimage)
+![Swagger UI](https://raw.githubusercontent.com/mohankumarpaluru/AudioServer/main/swagger_ui.png)
 
 An Alternative Interactive API documentation web user interface With ReDoc is available at 
 ```
