@@ -76,9 +76,7 @@ def get_audio_files(
 
 
 def create_audio_file(
-    db: Session,
-    audio_type: AudioFileType,
-    audio_file_metadata: AudioCreateTypeSchemas,
+    db: Session, audio_type: AudioFileType, audio_file_metadata: AudioCreateTypeSchemas,
 ):
     """
     Creates an AudioFile through AudioType
@@ -130,7 +128,7 @@ def update_audio_file(
     if not audio_object_id:
         raise AudioDoesNotExist()
 
-    if audio_object_id != audio_id:
+    if audio_object_id != 1:
         raise UpdateError()
 
     db.commit()
@@ -152,12 +150,14 @@ def delete_audio_file(db: Session, audio_type: AudioFileType, audio_id: int):
     else a Success Message
     """
     audio_model = get_audio_model(audio_type)
-    audio_object_id = db.query(audio_model).filter_by(id=audio_id).delete()
+    audio_object_id = db.query(audio_model).filter_by(id=audio_id).first()
 
     if not audio_object_id:
         raise AudioDoesNotExist()
 
-    if audio_object_id != audio_id:
+    try:
+        db.delete(audio_object_id)
+    except UnmappedInstanceError:
         raise DeleteError()
 
     db.commit()

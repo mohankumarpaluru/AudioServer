@@ -1,0 +1,752 @@
+{
+	"info": {
+		"_postman_id": "6547e888-66c0-4ff7-8139-a859cfe90995",
+		"name": "AudioServer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "song",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:7201/song",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "7201",
+					"path": [
+						"song"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get_all_songs_success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:7201/song",
+							"protocol": "http",
+							"host": [
+								"10",
+								"154",
+								"193",
+								"193"
+							],
+							"port": "7201",
+							"path": [
+								"song"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 25 Apr 2021 14:11:39 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "79"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 110,\n        \"duration\": 90,\n        \"uploaded_time\": \"2021-04-25T18:39:49\",\n        \"name\": \"song1\"\n    }\n]"
+				},
+				{
+					"name": "get_song_by_id_success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:7201/song/110",
+							"protocol": "http",
+							"host": [
+								"10",
+								"154",
+								"193",
+								"193"
+							],
+							"port": "7201",
+							"path": [
+								"song",
+								"110"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 25 Apr 2021 14:12:10 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "77"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 110,\n    \"duration\": 90,\n    \"uploaded_time\": \"2021-04-25T18:39:49\",\n    \"name\": \"song1\"\n}"
+				},
+				{
+					"name": "get_song_by_id_404",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:7201/song/11",
+							"protocol": "http",
+							"host": [
+								"10",
+								"154",
+								"193",
+								"193"
+							],
+							"port": "7201",
+							"path": [
+								"song",
+								"11"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 25 Apr 2021 14:13:38 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "33"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": \"AudioFile not found!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Song Create ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"audioFileType\": \"song\",\r\n  \"audioFileMetaData\": {\r\n    \"id\": 99,\r\n    \"name\": \"string\",\r\n    \"duration\": 23\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:7201/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "7201",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Song Create Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"audioFileType\": \"song\",\r\n  \"audioFileMetaData\": {\r\n    \"id\": 27,\r\n    \"name\": \"song1\",\r\n    \"duration\": 290\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:7201/",
+							"protocol": "http",
+							"host": [
+								"10",
+								"154",
+								"193",
+								"193"
+							],
+							"port": "7201",
+							"path": [
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 25 Apr 2021 14:16:07 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "77"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 27,\n    \"duration\": 290,\n    \"uploaded_time\": \"2021-04-25T19:46:08\",\n    \"name\": \"song1\"\n}"
+				},
+				{
+					"name": "Song Create_400_already_exists",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"audioFileType\": \"song\",\r\n  \"audioFileMetaData\": {\r\n    \"id\": 1110,\r\n    \"name\": \"string\",\r\n    \"duration\": 23\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:7201/",
+							"protocol": "http",
+							"host": [
+								"10",
+								"154",
+								"193",
+								"193"
+							],
+							"port": "7201",
+							"path": [
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 25 Apr 2021 14:18:08 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "42"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": \"AudioFile ID already Exists !\"\n}"
+				},
+				{
+					"name": "Song Create Update",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"audioFileType\": \"song\",\r\n  \"audioFileMetaData\": {\r\n    \"id\": 99,\r\n    \"name\": \"string\",\r\n    \"duration\": 23\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:7201/song/1110",
+							"protocol": "http",
+							"host": [
+								"10",
+								"154",
+								"193",
+								"193"
+							],
+							"port": "7201",
+							"path": [
+								"song",
+								"1110"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 25 Apr 2021 14:19:16 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "45"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": \"Audio file updated successfully!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "AudioBook Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"audioFileType\": \"audiobook\",\r\n  \"audioFileMetaData\": {\r\n    \"id\": 991,\r\n    \"title\": \"string\",\r\n    \"author\" : \"freetimer\",\r\n    \"narrator\": \"mohan\",\r\n    \"duration\": 23\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:7201/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "7201",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "AudioBook Create _success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"audioFileType\": \"audiobook\",\r\n  \"audioFileMetaData\": {\r\n    \"id\": 991,\r\n    \"title\": \"string\",\r\n    \"author\" : \"freetimer\",\r\n    \"narrator\": \"mohan\",\r\n    \"duration\": 23\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:7201/",
+							"protocol": "http",
+							"host": [
+								"10",
+								"154",
+								"193",
+								"193"
+							],
+							"port": "7201",
+							"path": [
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 25 Apr 2021 14:30:28 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "119"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 991,\n    \"duration\": 23,\n    \"uploaded_time\": \"2021-04-25T20:00:33\",\n    \"title\": \"string\",\n    \"author\": \"freetimer\",\n    \"narrator\": \"mohan\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Podcast Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"audioFileType\": \"audiobook\",\r\n  \"audioFileMetaData\": {\r\n    \"id\": 991,\r\n    \"title\": \"string\",\r\n    \"author\" : \"freetimer\",\r\n    \"narrator\": \"mohan\",\r\n    \"duration\": 23\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:7201/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "7201",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Podcast Create Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"audioFileType\": \"podcast\",\r\n  \"audioFileMetaData\": {\r\n    \"id\": 901,\r\n    \"name\": \"string1\",\r\n    \"host\" : \"freetimer2\",\r\n    \"participants\": \"mohan\",\r\n    \"duration\": 23\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:7201/",
+							"protocol": "http",
+							"host": [
+								"10",
+								"154",
+								"193",
+								"193"
+							],
+							"port": "7201",
+							"path": [
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 25 Apr 2021 14:38:11 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "79"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 901,\n    \"duration\": 23,\n    \"uploaded_time\": \"2021-04-25T20:08:11\",\n    \"name\": \"string1\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Song_update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"audioFileType\": \"song\",\r\n  \"audioFileMetaData\": {\r\n    \"id\": 99,\r\n    \"name\": \"string\",\r\n    \"duration\": 23\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:7201/song/1110",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "7201",
+					"path": [
+						"song",
+						"1110"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Song_Update _success",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"audioFileType\": \"song\",\r\n  \"audioFileMetaData\": {\r\n    \"id\": 99,\r\n    \"name\": \"string\",\r\n    \"duration\": 23\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:7201/song/1110",
+							"protocol": "http",
+							"host": [
+								"10",
+								"154",
+								"193",
+								"193"
+							],
+							"port": "7201",
+							"path": [
+								"song",
+								"1110"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 25 Apr 2021 14:19:16 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "45"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": \"Audio file updated successfully!\"\n}"
+				},
+				{
+					"name": "Song Update 404",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"audioFileType\": \"song\",\r\n  \"audioFileMetaData\": {\r\n    \"id\": 99,\r\n    \"name\": \"string\",\r\n    \"duration\": 23\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:7201/song/1110",
+							"protocol": "http",
+							"host": [
+								"10",
+								"154",
+								"193",
+								"193"
+							],
+							"port": "7201",
+							"path": [
+								"song",
+								"1110"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 25 Apr 2021 14:20:36 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "33"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": \"AudioFile not found!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Song_Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"audioFileType\": \"song\",\r\n  \"audioFileMetaData\": {\r\n    \"id\": 99,\r\n    \"name\": \"string\",\r\n    \"duration\": 23\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:7201/song/27",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "7201",
+					"path": [
+						"song",
+						"27"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Song_delete_success",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"audioFileType\": \"song\",\r\n  \"audioFileMetaData\": {\r\n    \"id\": 99,\r\n    \"name\": \"string\",\r\n    \"duration\": 23\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:7201/song/27",
+							"protocol": "http",
+							"host": [
+								"10",
+								"154",
+								"193",
+								"193"
+							],
+							"port": "7201",
+							"path": [
+								"song",
+								"27"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 25 Apr 2021 14:22:41 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "45"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": \"Audio file deleted successfully!\"\n}"
+				},
+				{
+					"name": "Song_Delete_404",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"audioFileType\": \"song\",\r\n  \"audioFileMetaData\": {\r\n    \"id\": 99,\r\n    \"name\": \"string\",\r\n    \"duration\": 23\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:7201/song/27",
+							"protocol": "http",
+							"host": [
+								"10",
+								"154",
+								"193",
+								"193"
+							],
+							"port": "7201",
+							"path": [
+								"song",
+								"27"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "date",
+							"value": "Sun, 25 Apr 2021 14:23:13 GMT"
+						},
+						{
+							"key": "server",
+							"value": "uvicorn"
+						},
+						{
+							"key": "content-length",
+							"value": "33"
+						},
+						{
+							"key": "content-type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": \"AudioFile not found!\"\n}"
+				}
+			]
+		}
+	]
+}

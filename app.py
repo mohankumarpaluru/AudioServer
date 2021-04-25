@@ -28,20 +28,19 @@ def get_db(request: Request):
 
 # ---- Beginning API of Routes ----#
 @app.post("/", response_model=AudioTypeSchemas)
-def create_audio_file(
-    audio: AudioCreate, db: Session = Depends(get_db)
-):
+def create_audio_file(audio: AudioCreate, db: Session = Depends(get_db)):
     """
     Api Route to create any of the three AudioFile Types
     """
     try:
-        read_audio_file(
-            audio_type=audio.audio_type, audio_id=audio.audioFileMetaData.id, db=db
+        crud.get_audio_file(
+            db, audio_type=audio.audioFileType, audio_id=audio.audioFileMetaData.id
         )
+
     except AudioDoesNotExist:
         return crud.create_audio_file(
             db=db,
-            audio_type=audio.audio_type,
+            audio_type=audio.audioFileType,
             audio_file_metadata=audio.audioFileMetaData,
         )
     raise HTTPException(status_code=400, detail="AudioFile ID already Exists !")
@@ -55,7 +54,6 @@ def create_audio_file(
 )
 @app.get("/{audio_type}/{audio_id}", response_model=AudioTypeSchemas)
 def read_audio_file(
-
     audio_type: AudioFileType,
     audio_id: Optional[int] = None,
     db: Session = Depends(get_db),
@@ -71,9 +69,7 @@ def read_audio_file(
 
     # retrieves specific audio file
     try:
-        return crud.get_audio_file(
-            db, audio_type=audio_type, audio_id=audio_id
-        )
+        return crud.get_audio_file(db, audio_type=audio_type, audio_id=audio_id)
 
     except AudioDoesNotExist:
         raise HTTPException(status_code=404, detail="AudioFile not found!")
@@ -114,9 +110,7 @@ def delete_audio_file(
     Api Route to Delete any of the three AudioFile Types by id
     """
     try:
-        crud.delete_audio_file(
-            db=db, audio_type=audio_type, audio_id=audio_id
-        )
+        crud.delete_audio_file(db=db, audio_type=audio_type, audio_id=audio_id)
         return JSONResponse({"detail": "Audio file deleted successfully!"})
 
     except DeleteError:

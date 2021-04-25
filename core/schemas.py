@@ -6,8 +6,9 @@ Description : Schemas Handler for all the Audio Services
 
 
 from datetime import datetime
-from typing import Union, Optional, NewType, Literal
-from pydantic import BaseModel, constr, conint, conlist, root_validator
+from typing import Union, Optional, NewType
+from typing_extensions import Literal
+from pydantic import BaseModel, constr, conint, root_validator
 
 AudioFileType = NewType("AudioFileType", Literal["song", "podcast", "audiobook"])
 
@@ -16,6 +17,7 @@ class AudioSchema(BaseModel):
     """
     Base AudioSchema Class with Common MetaData between the types
     """
+
     id: int
     duration: conint(gt=0)
     uploaded_time: datetime
@@ -36,6 +38,7 @@ class PodcastSchema(AudioSchema):
     """
     Podcast Class with additional Metadata than common ones
     """
+
     name: constr(min_length=1, max_length=100)
     host: constr(min_length=1, max_length=100)
     participants: Optional[constr(min_length=1, max_length=1000)]
@@ -48,6 +51,7 @@ class AudiobookSchema(AudioSchema):
     """
     AudiobookSchema Class with additional Metadata than common ones
     """
+
     title: constr(min_length=1, max_length=100)
     author: constr(min_length=1, max_length=100)
     narrator: constr(min_length=1, max_length=100)
@@ -60,6 +64,7 @@ class SongCreateSchema(BaseModel):
     """
     Schema of Metadata required to create a Song
     """
+
     id: conint(gt=0)
     name: constr(min_length=1, max_length=100)
     duration: conint(gt=0)
@@ -69,6 +74,7 @@ class PodcastCreateSchema(BaseModel):
     """
     Schema of Metadata required to create a Podcast
     """
+
     id: conint(gt=0)
     name: constr(min_length=1, max_length=100)
     duration: conint(gt=0)
@@ -80,6 +86,7 @@ class AudiobookCreateSchema(BaseModel):
     """
     Schema of Metadata required to create an AudioBook
     """
+
     id: conint(gt=0)
     title: constr(min_length=1, max_length=100)
     author: constr(min_length=1, max_length=100)
@@ -91,6 +98,11 @@ AudioTypeSchemas = Union[SongSchema, PodcastSchema, AudiobookSchema]
 AudioCreateTypeSchemas = Union[
     SongCreateSchema, PodcastCreateSchema, AudiobookCreateSchema,
 ]
+
+AudioCreateTypeSchemas = Union[
+    PodcastCreateSchema, SongCreateSchema, PodcastCreateSchema, AudiobookCreateSchema,
+]
+
 
 type_to_create_schema_map = {
     "song": SongCreateSchema,
