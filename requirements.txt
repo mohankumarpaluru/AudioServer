@@ -1,0 +1,8 @@
+PyMySQL==1.0.2
+SQLAlchemy == 1.4.11
+fastapi == 0.63.0
+pydantic == 1.8.1
+python-decouple==3.4
+python-multipart==0.0.5
+starlette == 0.13.6
+uvicorn[standard]==0.13.4
